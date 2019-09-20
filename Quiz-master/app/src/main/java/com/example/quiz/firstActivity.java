@@ -1,16 +1,19 @@
 package com.example.quiz;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,6 +33,8 @@ public class firstActivity extends AppCompatActivity {
     private CountDownTimer timer;
     private long timeleft=60000;
 
+    ConstraintLayout back;
+    AnimationDrawable am;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,8 @@ public class firstActivity extends AppCompatActivity {
         score=findViewById(R.id.score);
         database=FirebaseDatabase.getInstance();
         time=findViewById(R.id.timer);
+
+
 
 
         timer=new CountDownTimer(timeleft,1000) {
@@ -68,17 +75,24 @@ public class firstActivity extends AppCompatActivity {
             }
         }.start();
 
+        back=findViewById(R.id.back);
+
+        am=(AnimationDrawable) back.getBackground();
+        am.setEnterFadeDuration(1000);
+        am.setExitFadeDuration(1000);
+        am.start();
+
 
         player=MediaPlayer.create(firstActivity.this,R.raw.m1);
         player.setLooping(true);
-    //    player.start();
+        player.start();
 
         next.setEnabled(false);
 
-        choice1.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
-        choice2.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
-        choice3.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
-        choice4.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
+        choice1.setBackgroundColor(getColor(R.color.dark_blue));
+        choice2.setBackgroundColor(getColor(R.color.dark_blue));
+        choice3.setBackgroundColor(getColor(R.color.dark_blue));
+        choice4.setBackgroundColor(getColor(R.color.dark_blue));
 
         next_ques(count);
         next.setOnClickListener(new View.OnClickListener() {
@@ -88,10 +102,10 @@ public class firstActivity extends AppCompatActivity {
                 next.setEnabled(false);
                 if(count<=10){
                     count+=1;
-                    choice1.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
-                    choice2.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
-                    choice3.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
-                    choice4.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
+                    choice1.setBackgroundColor(getColor(R.color.dark_blue));
+                    choice2.setBackgroundColor(getColor(R.color.dark_blue));
+                    choice3.setBackgroundColor(getColor(R.color.dark_blue));
+                    choice4.setBackgroundColor(getColor(R.color.dark_blue));
                     next_ques(count);
                 }
                 else {
@@ -185,13 +199,13 @@ public class firstActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(answer.equals(choice1.getText().toString())){
-                    choice1.setBackgroundColor(getColor(R.color.colorPrimary));
+                    choice1.setBackgroundColor(getColor(R.color.green));
                     Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
                     marks+=1;
                     correct+=1;
                 }
                 else {
-                    choice1.setBackgroundColor(getColor(R.color.colorAccent));
+                    choice1.setBackgroundColor(getColor(R.color.red));
                     Toast.makeText(firstActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
                     marks-=1;
                 }
@@ -206,13 +220,13 @@ public class firstActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(answer.equals(choice2.getText().toString())){
-                    choice2.setBackgroundColor(getColor(R.color.colorPrimary));
+                    choice2.setBackgroundColor(getColor(R.color.green));
                     Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
                     marks+=1;
                     correct+=1;
                 }
                 else {
-                    choice2.setBackgroundColor(getColor(R.color.colorAccent));
+                    choice2.setBackgroundColor(getColor(R.color.red));
                     Toast.makeText(firstActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
                     marks-=1;
                 }
@@ -226,13 +240,13 @@ public class firstActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(answer.equals(choice3.getText().toString())){
-                    choice3.setBackgroundColor(getColor(R.color.colorPrimary));
+                    choice3.setBackgroundColor(getColor(R.color.green));
                     Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
                     marks+=1;
                     correct+=1;
                 }
                 else {
-                    choice3.setBackgroundColor(getColor(R.color.colorAccent));
+                    choice3.setBackgroundColor(getColor(R.color.red));
                     Toast.makeText(firstActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
                     marks-=1;
                 }
@@ -246,13 +260,13 @@ public class firstActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(answer.equals(choice4.getText().toString())){
-                    choice4.setBackgroundColor(getColor(R.color.colorPrimary));
+                    choice4.setBackgroundColor(getColor(R.color.green));
                     Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
                     marks+=1;
                     correct+=1;
                 }
                 else {
-                    choice4.setBackgroundColor(getColor(R.color.colorAccent));
+                    choice4.setBackgroundColor(getColor(R.color.red));
                     Toast.makeText(firstActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
                     marks-=1;
                 }

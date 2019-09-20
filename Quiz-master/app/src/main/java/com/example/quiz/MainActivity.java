@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         back=findViewById(R.id.back);
 
         am=(AnimationDrawable) back.getBackground();
-        am.setEnterFadeDuration(3000);
+        am.setEnterFadeDuration(1000);
         am.setExitFadeDuration(1000);
         am.start();
 
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         player=MediaPlayer.create(MainActivity.this, R.raw.m3);
         player.setLooping(true);
-       // player.start();
+        player.start();
 
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
