@@ -43,7 +43,7 @@ public class SignUp extends AppCompatActivity {
 
         player=MediaPlayer.create(SignUp.this,R.raw.m2);
         player.setLooping(true);
-        player.start();
+    //    player.start();
 
         back=findViewById(R.id.back);
         am=(AnimationDrawable) back.getBackground();

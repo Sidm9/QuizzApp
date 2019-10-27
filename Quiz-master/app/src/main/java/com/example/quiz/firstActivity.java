@@ -85,7 +85,7 @@ public class firstActivity extends AppCompatActivity {
 
         player=MediaPlayer.create(firstActivity.this,R.raw.m1);
         player.setLooping(true);
-        player.start();
+    //    player.start();
 
         next.setEnabled(false);
 
@@ -115,6 +115,7 @@ public class firstActivity extends AppCompatActivity {
                     extras.putInt("marks",marks);
                     extras.putInt("ques",count);
                     extras.putInt("correct",correct);
+                    Intent i=new Intent(firstActivity.this,Statistics.class);
                     Intent i=new Intent(firstActivity.this,Statistics.class);
                     i.putExtras(extras);
                     startActivity(i);

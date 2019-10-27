@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         player=MediaPlayer.create(MainActivity.this, R.raw.m3);
         player.setLooping(true);
-        player.start();
+      //  player.start();
 
         signin.setOnClickListener(new View.OnClickListener() {
             @Override

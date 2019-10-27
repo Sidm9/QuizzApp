@@ -27,7 +27,7 @@ public class Statistics extends AppCompatActivity {
 
         player=MediaPlayer.create(Statistics.this,R.raw.m4);
         player.setLooping(true);
-        player.start();
+//        player.start();
 
         Intent i=getIntent();
         Bundle extras=i.getExtras();
